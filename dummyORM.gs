@@ -128,7 +128,7 @@ class DummyORM {
     const keyValue = sanitizedDatum[key];
 
     let rowToInsert = -1;
-    for(let i=1; i<keyProperties.length; i++){
+    for(let i=0; i<keyProperties.length; i++){
       if(keyProperties[i][0] === keyValue){
         rowToInsert = i + 2;
         break;
@@ -137,7 +137,7 @@ class DummyORM {
 
     if(rowToInsert === -1){
       this.create(sheetName, sanitizedDatum);
-      Logger.log(`Failed to find existing data with key: ${keyValue}. Created new one.`);
+      Logger.log(`Failed to find existing data with key value: ${keyValue}. Created new one.`);
       return;
     }
 

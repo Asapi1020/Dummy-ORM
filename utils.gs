@@ -37,6 +37,19 @@ function sanitizeDatum(datum) {
   return sanitizedDatum;
 }
 
+function sanitizeInput(input) {
+  // replace HTML entity from unique characters
+  const entityMap = {
+    '<': '&lt;',
+    '>': '&gt;',
+    '=': '&#61;',
+  };
+  
+  return input.replace(/[<>=]/g, (match) => {
+    return entityMap[match];
+  });
+}
+
 /**
  * @param {Object} object - {id: 1020, name: 'moe'}
  * @param {string[]} keys - [name, id]
